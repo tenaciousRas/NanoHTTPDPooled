@@ -6,6 +6,10 @@ import android.content.Context;
 import android.util.Log;
 
 /**
+ * <p>
+ * AndroidHTTPD version 0.5, Copyright &copy; 2012 Free Beachler
+ * (fbeachler@gmail.com, http://github.com/tenaciousRas)
+ * 
  * @author fbeachler
  * 
  */
