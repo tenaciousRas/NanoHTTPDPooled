@@ -2,7 +2,7 @@ Adaptations to NanoHTTPD for easier subclassing.  NanoHTTPD is a simple HTTP ser
 
 NanoHTTPDPooled provides a simple HTTP connection pool per the recommendation at http://java.sun.com/developer/technicalArticles/Networking/Webserver/.  The intent is to offload the overhead involved in thread management from time-of-request to time-of-instantiation.
 
-The absence of a package name is intentional.  This is DIY code, and the license allows you to adopt you own package name to the source.
+The absence of a package name is intentional:  adopt your own package name to the source.
 
 To use:
 * Add the source files to your project.  Use either NanoHTTPD, NanoHTTPPooled, or AndroidHTTPD.
