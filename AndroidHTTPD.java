@@ -13,11 +13,19 @@ public class AndroidHTTPD extends NanoHTTPDPooled {
 
 	public static final String TAG = "AndroidHTTPD";
 
+	/**
+	 * Implementors handle HTTP requests delegated by AndroidHTTPD#serve(java.lang.String,
+	 * java.lang.String, java.util.Properties, java.util.Properties,
+	 * java.util.Properties)
+	 */
 	public static interface RequestHandler {
 		public Response onRequestReceived(String uri, String method,
 				Properties header, Properties parms, Properties files);
 	}
 
+	/**
+	 * The request handler set for this instance.
+	 */
 	private RequestHandler requestHandler;
 
 	public AndroidHTTPD(Context ctx, int port, File wwwroot,
