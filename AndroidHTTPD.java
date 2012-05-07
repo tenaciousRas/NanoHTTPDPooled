@@ -20,7 +20,7 @@ public class AndroidHTTPD extends NanoHTTPDPooled {
 
 	private RequestHandler requestHandler;
 
-	public ExampleAndroidServer(Context ctx, int port, File wwwroot,
+	public AndroidHTTPD(Context ctx, int port, File wwwroot,
 			RequestHandler requestHandler) throws IOException {
 		super(port, wwwroot);
 		this.requestHandler = requestHandler;
