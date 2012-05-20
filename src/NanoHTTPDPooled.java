@@ -1,5 +1,3 @@
-package com.longevitysoft.spherodunk.server;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -23,8 +21,6 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
 import java.util.Vector;
-
-import android.util.Log;
 
 /**
  * A wrapper on top of NanoHTTPD that provides a managed connection pool. Since
@@ -101,7 +97,7 @@ public class NanoHTTPDPooled {
 	public void startServer() throws IOException {
 		myServerSocket = new ServerSocket(myTcpPort);
 		for (int i = 0; i < workers; ++i) {
-			com.longevitysoft.spherodunk.server.NanoHTTPDPooled.HTTPSession w = new HTTPSession();
+			NanoHTTPDPooled.HTTPSession w = new HTTPSession();
 			(new Thread(w, "worker-#" + i)).start();
 			threads.addElement(w);
 		}
@@ -109,7 +105,7 @@ public class NanoHTTPDPooled {
 		try {
 			myServerSocket = new ServerSocket(myTcpPort);
 		} catch (IOException e) {
-			Log.e(TAG, Log.getStackTraceString(e));
+			e.printStackTrace();
 		}
 		if (null != myServerSocket) {
 			myThread = new Thread(new Runnable() {
@@ -304,8 +300,8 @@ public class NanoHTTPDPooled {
 			}
 
 		try {
-			new NanoHTTPD(port, wwwroot);
-		} catch (IOException ioe) {
+			new NanoHTTPDPooled(port, wwwroot);
+		} catch (Exception ioe) {
 			System.err.println("Couldn't start server:\n" + ioe);
 			System.exit(-1);
 		}
@@ -347,7 +343,7 @@ public class NanoHTTPDPooled {
 				try {
 					processRequest();
 				} catch (Exception e) {
-					Log.e(TAG, Log.getStackTraceString(e));
+					e.printStackTrace();
 				}
 				/*
 				 * go back in wait queue if there's fewer than numHandler
